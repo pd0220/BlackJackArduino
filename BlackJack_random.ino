@@ -4,7 +4,12 @@
 void setup()
 {
   // see https://www.arduino.cc/reference/en/language/functions/random-numbers/randomseed/
-  randomSeed(analogRead(0));
+  // data3
+  randomSeed(analogRead(random() ^ ((uint32_t) analogRead(0) << 22) ^ micros()));
+  // data2
+  //randomSeed(analogRead(0) ^ random());
+  // data1
+  //randomSeed(analogRead(0));
 
   // start serial
   Serial.begin(9600);
